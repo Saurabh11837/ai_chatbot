@@ -12,3 +12,6 @@ export default function Home() {
     </>
   );
 }
+
+// for backend rund url
+// http://56.228.34.165:5000/

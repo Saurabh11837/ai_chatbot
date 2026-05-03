@@ -239,7 +239,8 @@ const PromptInput: React.FC<Props> = ({ setMessage, chatId, setChatId }) => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const API_URL = "http://localhost:5000";
+    const APP_API_URL="http://56.228.34.165:5000" 
+
 
     const handleSend = async () => {
         if (!input.trim() || loading) return;
@@ -254,7 +255,7 @@ const PromptInput: React.FC<Props> = ({ setMessage, chatId, setChatId }) => {
         setLoading(true);
 
         try {
-            const res = await fetch(`${API_URL}/api/chat/send-stream`, {
+            const res = await fetch(`${APP_API_URL}/api/chat/send-stream`, {
                 method: "POST",
                 credentials: "include",
                 headers: {

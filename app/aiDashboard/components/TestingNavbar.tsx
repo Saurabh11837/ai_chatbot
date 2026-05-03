@@ -187,9 +187,11 @@
 
 
 // --- Addign lgoing route with api---
+
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import http from "react-syntax-highlighter/dist/cjs/languages/prism/http";
 type NavbarProps ={
     user:any;
     setUser: React.Dispatch<React.SetStateAction<any>>;
@@ -203,6 +205,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
     >("login");
 
     // const [user, setUser] = useState<any>(null);
+    const APP_API_URL="http://56.228.34.165:5000" 
 
     const [isLogin, setIsLogin] = useState(false);
 
@@ -221,7 +224,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/auth/user", {
+                const res = await fetch(`${APP_API_URL}/api/auth/user`, {
                     credentials: "include",
                 });
                 const data = await res.json();
@@ -261,7 +264,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch("http://localhost:5000/api/auth/signup", {
+            const res = await fetch(`${APP_API_URL}/api/auth/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
@@ -283,7 +286,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
         setError("");
         try {
             const res = await fetch(
-                "http://localhost:5000/api/auth/verify-otp",
+                `${APP_API_URL}/api/auth/verify-otp`,
                 {
                     method: "POST",
                     credentials: "include",
@@ -308,7 +311,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
         setError("");
         try {
             const res = await fetch(
-                "http://localhost:5000/api/auth/complete-profile",
+                `${APP_API_URL}/api/auth/complete-profile`,
                 {
                     method: "POST",
                     credentials: "include",
@@ -342,7 +345,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch("http://localhost:5000/api/auth/login", {
+            const res = await fetch(`${APP_API_URL}/api/auth/login`, {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -353,7 +356,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
             if (!res.ok) throw new Error(data.message);
 
             setUser(data.user);
-            
+            console.log("User logged in: ", data.user);
             setAuthOpen(false);
         } catch (err: any) {
             setError(err.message);
@@ -363,7 +366,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({user, setUser}) => {
     };
 
     const handleLogout = async () => {
-        await fetch("http://localhost:5000/api/auth/logout", {
+        await fetch(`${APP_API_URL}/api/auth/logout`, {
             method: "POST",
             credentials: "include",
         });

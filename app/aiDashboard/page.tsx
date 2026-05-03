@@ -47,6 +47,8 @@ export type Message = {
 };
 
 const Page = () => {
+  const APP_API_URL="http://56.228.34.165:5000" 
+
   const [user, setUser] = useState<any>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatId, setChatId] = useState<string | null>(null);
@@ -62,7 +64,7 @@ const Page = () => {
     setChatId(id);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/chat/messages/${id}`, {
+      const res = await fetch(`${APP_API_URL}/api/chat/messages/${id}`, {
         credentials: "include",
       });
 
