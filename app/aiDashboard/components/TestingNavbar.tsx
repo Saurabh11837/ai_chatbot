@@ -23,8 +23,8 @@ const TestingNavbar: React.FC<NavbarProps> = ({ user, mobileMenuOpen, setMobileM
     >("login");
 
     // const [user, setUser] = useState<any>(null);
-    // const APP_API_URL="http://56.228.34.165:5000" 
-    const APP_API_URL = "http://localhost:5000"
+    const APP_API_URL="http://56.228.34.165:5000" 
+    // const APP_API_URL = "http://localhost:5000"
 
     const [isLogin, setIsLogin] = useState(false);
 

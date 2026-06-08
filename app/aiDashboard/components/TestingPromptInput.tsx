@@ -84,7 +84,7 @@ const TestingPromptInput: React.FC<Props> = ({ setMessages }) => {
         setLoading(true);
 
         try {
-            const res = await fetch("http://localhost:5000/api/chat/send-stream", {
+            const res = await fetch("http://56.228.34.165:5000/api/chat/send-stream", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

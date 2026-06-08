@@ -25,8 +25,8 @@ const SidebarTesting: React.FC<SidebarProps> = ({ user, mobileMenuOpen, setMobil
     const [editingId, setEditingId] = useState<string | null>(null);
     const [newTitle, setNewTitle] = useState("");
 
-    // const APP_API_URL="http://56.228.34.165:5000" 
-    const APP_API_URL = "http://localhost:5000"
+    const APP_API_URL="http://56.228.34.165:5000" 
+    // const APP_API_URL = "http://localhost:5000"
 
     // ✅ Initials
     const getInitials = (firstName: string, lastName: string) =>
