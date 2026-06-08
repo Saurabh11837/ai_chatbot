@@ -15,7 +15,7 @@ const TestingPromptInput: React.FC<Props> = ({ setMessages }) => {
 
     //     const userMessage: Message = {
     //       role: "user",
-    //       text: input,
+    //       text: input, n
     //     };
 
     //     // 1️⃣ user message add

@@ -47,12 +47,14 @@ export type Message = {
 };
 
 const Page = () => {
-  const APP_API_URL="http://56.228.34.165:5000" 
+  // const APP_API_URL="http://56.228.34.165:5000" 
+  const APP_API_URL = "http://localhost:5000"
 
   const [user, setUser] = useState<any>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatId, setChatId] = useState<string | null>(null);
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   const isStarted = messages.length > 0;
   const handleNewChat = () => {
     setMessages([]);
@@ -83,29 +85,31 @@ const Page = () => {
 
 
   return (
-    <div className="flex h-screen">
-      <SidebarTesting user={user} onNewChat={handleNewChat} onSelectChat={handleSelectChat} />
+    <div className="flex ">
+      <div className=" ">
+        <SidebarTesting user={user} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onNewChat={handleNewChat} onSelectChat={handleSelectChat} />
+      </div>
 
-      <div className="flex-1 flex flex-col relative">
-        <TestingNavbar user={user} setUser={setUser} />
 
-        {/* CHAT WINDOW */}
-        {messages.length === 0 ? (
-          <p className="text-center mt-10 text-gray-400">
-            Start a new conversation
-          </p>
-        ) : (
-          <ChatWindow messages={messages} />
-        )}
-        {/* INPUT */}
-        <div
-          className={`
-            w-full flex justify-center transition-all duration-500
-            ${isStarted
-              ? "absolute bottom-0 "
-              : "absolute top-1/2 -translate-y-1/2"}
-          `}
-        >
+      <div className="flex-1 h-screen flex flex-col overflow-hidden">
+        {/* Navbar */}
+        <div className="h-16 shrink-0">
+          <TestingNavbar user={user} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} setUser={setUser} />
+        </div>
+
+        {/* Chat Window */}
+        <div className="flex-1 overflow-y-auto">
+          {messages.length === 0 ? (
+            <p className="text-center mt-10 text-gray-400">
+              Start a new conversation
+            </p>
+          ) : (
+            <ChatWindow messages={messages} />
+          )}
+        </div>
+
+        {/* Input */}
+        <div className="shrink-0  p-4">
           <PromptInput
             setMessage={setMessages}
             chatId={chatId}

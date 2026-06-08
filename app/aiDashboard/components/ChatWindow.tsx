@@ -53,31 +53,36 @@ const ChatWindow = ({ messages }: any) => {
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "auto" });
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-white pb-28">
+    <>
+      <div>
+        <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-white pb-28">
 
-      {messages.map((msg: any, i: number) => (
-        <div
-          key={i}
-          className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-        >
-          <div
-            className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${msg.role === "user"
-              ? "bg-black text-white ml-auto"
-              : "bg-gray-100 text-black"
-              }`}
-          >
-            <MarkdownRenderer content={msg.text} />
-          </div>
+          {messages.map((msg: any, i: number) => (
+            <div
+              key={i}
+              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+            >
+              <div
+                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${msg.role === "user"
+                  ? "bg-black text-white ml-auto"
+                  : "bg-gray-100 text-black"
+                  }`}
+              >
+                <MarkdownRenderer content={msg.text} />
+              </div>
+            </div>
+          ))}
+
+          {/* scroll anchor */}
+          <div ref={bottomRef} />
         </div>
-      ))}
+      </div>
+    </>
 
-      {/* scroll anchor */}
-      <div ref={bottomRef} />
-    </div>
   );
 };
 

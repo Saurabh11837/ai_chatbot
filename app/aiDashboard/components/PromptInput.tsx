@@ -239,7 +239,8 @@ const PromptInput: React.FC<Props> = ({ setMessage, chatId, setChatId }) => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const APP_API_URL="http://56.228.34.165:5000" 
+    // const APP_API_URL="http://56.228.34.165:5000" 
+    const APP_API_URL="http://localhost:5000"
 
 
     const handleSend = async () => {

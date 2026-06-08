@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({user}) => {
 
   return (
     <div
-      className={`flex flex-col h-screen ${collapsed ? "w-16" : "w-64"
+      className={`flex flex-col  ${collapsed ? "w-16" : "w-64"
         } bg-gray-100 transition-all duration-300 ease-in-out`}
     >
       {/* 🔝 TOP SECTION */}
