@@ -25,7 +25,10 @@ const SidebarTesting: React.FC<SidebarProps> = ({ user, mobileMenuOpen, setMobil
     const [editingId, setEditingId] = useState<string | null>(null);
     const [newTitle, setNewTitle] = useState("");
 
-    const APP_API_URL="http://56.228.34.165:5000" 
+    // const APP_API_URL="http://56.228.34.165:5000" 
+
+    // deploy on deno.com url for backend 
+    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"   // This is the backend url for deployment, you can use this url to test the deployed backend. For local testing use "http://localhost:5000"
     // const APP_API_URL = "http://localhost:5000"
 
     // ✅ Initials
