@@ -47,8 +47,11 @@ export type Message = {
 };
 
 const Page = () => {
-  const APP_API_URL="http://56.228.34.165:5000" 
+  // const APP_API_URL="http://56.228.34.165:5000" 
   // const APP_API_URL = "http://localhost:5000"
+
+  // deploy on deno.com url for backend 
+    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
 
   const [user, setUser] = useState<any>(null);
   const [messages, setMessages] = useState<Message[]>([]);

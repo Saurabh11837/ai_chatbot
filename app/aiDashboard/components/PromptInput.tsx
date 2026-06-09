@@ -239,9 +239,11 @@ const PromptInput: React.FC<Props> = ({ setMessage, chatId, setChatId }) => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const APP_API_URL="http://56.228.34.165:5000" 
+    // const APP_API_URL="http://56.228.34.165:5000" 
     // const APP_API_URL="http://localhost:5000"
 
+    // deploy on deno.com url for backend 
+    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
 
     const handleSend = async () => {
         if (!input.trim() || loading) return;
