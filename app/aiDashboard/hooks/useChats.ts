@@ -8,11 +8,11 @@ type Chat = {
 export const useChats = () => {
     const [chats, setChats] = useState<Chat[]>([]);
     const [loading, setLoading] = useState(false);
-
+    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
     const fetchChats = async () => {
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:5000/api/chat/chats", {
+            const res = await fetch(`${APP_API_URL}/api/chat/chats`, {
                 credentials: "include",
             });
             const data = await res.json();
@@ -30,7 +30,7 @@ export const useChats = () => {
 
     const updateChat = async (id: string, title: string) => {
         try {
-            const res = await fetch(`http://localhost:5000/api/chat/rename/${id}`, {
+            const res = await fetch(`${APP_API_URL}/api/chat/rename/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const useChats = () => {
 
     const deleteChat = async (id: string) => {
         try {
-            const res = await fetch(`http://localhost:5000/api/chat/deleteChat/${id}`, {
+            const res = await fetch(`${APP_API_URL}/api/chat/deleteChat/${id}`, {
                 method: "DELETE",
                 credentials: "include",
             });
