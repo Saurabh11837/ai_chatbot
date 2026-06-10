@@ -71,7 +71,8 @@ const TestingPromptInput: React.FC<Props> = ({ setMessages }) => {
     //     }
     //   };
     // deploy on deno.com url for backend 
-    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
+    // const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
+    const APP_API_URL = "http://localhost:5000"
     const handleSend = async () => {
         if (!input.trim() || loading) return;
 
@@ -115,7 +116,7 @@ const TestingPromptInput: React.FC<Props> = ({ setMessages }) => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask anything..."
-                className="flex-1 outline-none px-2 py-2 text-sm"
+                className="flex-1 outline-none px-2 py-2 text-sm text-black"
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
             />
 

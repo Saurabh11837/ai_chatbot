@@ -24,10 +24,10 @@ const TestingNavbar: React.FC<NavbarProps> = ({ user, mobileMenuOpen, setMobileM
 
     // const [user, setUser] = useState<any>(null);
     // const APP_API_URL="http://56.228.34.165:5000" 
-    // const APP_API_URL = "http://localhost:5000"
+    const APP_API_URL = "http://localhost:5000"
 
     // deploy on deno.com url for backend 
-    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
+    // const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
 
     const [isLogin, setIsLogin] = useState(false);
 
@@ -200,88 +200,98 @@ const TestingNavbar: React.FC<NavbarProps> = ({ user, mobileMenuOpen, setMobileM
     return (
         <>
             {/* NAVBAR */}
-            <div className="w-full h-15 px-4 border-b  border-gray-300 flex justify-between items-center">
-                {!mobileMenuOpen && (
+            <div className="w-full  h-15 px-2 border-b  border-gray-300 flex justify-between items-center">
+                {/* {!mobileMenuOpen && (
                     <div
                             className="p-2 border-b h-15 border-gray-300 flex items-center justify-center md:hidden"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
                             <FiMenu className="h-7 w-7 " />
                         </div>
-                )}
-                
+                )} */}
+
                 {/* LEFT */}
-                <div ref={cardRef} className="relative hidden md:block">
-                    <button
+                {!mobileMenuOpen ? (
+                    <div
+                        className="p-2 border-b h-15 border-gray-300 flex items-center justify-center md:hidden"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        <FiMenu className="h-7 w-7 text-gray-600" />
+                    </div>
+                ) : (
+                    <div ref={cardRef} className="relative hidden md:block">
+                        <button
                             onClick={() => setOpen(!open)}
                             className="flex p-2 text-xl font-bold gap-1 hover:bg-gray-400 rounded-xl cursor-pointer"
                         >
-                        Chat AI <IoIosArrowDown className="mt-1" />
-                    </button>
-                    
-                    {/* Dropdown */}
-                    {open && (
-                        user ? (
-                            // ✅ LOGIN USER UI
-                            <div className="absolute top-10 left-0 border rounded-2xl bg-white shadow-xl w-72 p-3">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <p className="font-semibold">ChatGPT Plus</p>
-                                        <p className="text-xs text-gray-500">Our smartest model & more</p>
-                                    </div>
-                                    <button className="border px-3 py-1 rounded-full text-sm">
-                                        Upgrade
-                                    </button>
-                                </div>
+                            Chat AI <IoIosArrowDown className="mt-1" />
+                        </button>
 
-                                <div className="mt-3 flex items-center justify-between text-sm">
-                                    <p>Chat AI</p>
-                                    <span>Free ✔</span>
-                                </div>
-                            </div>
-                        ) : (
-
-                            <div className="absolute top-10 left-0 border rounded-2xl bg-white shadow-xl overflow-hidden">
-                                <div className="h-36 w-80">
-                                    <img
-                                        src="chatAi.webp"
-                                        className="w-full h-full object-cover"
-                                        alt="banner"
-                                    />
-                                </div>
-
-                                <div className="p-4">
-                                    <h2 className="font-semibold mb-1">
-                                        Try advanced features for free
-                                    </h2>
-
-                                    <p className="text-xs text-gray-600 mb-3">
-                                        Get smarter responses, upload files, create images, and more.
-                                    </p>
-
-                                    <div className="flex gap-2">
-                                        <button
-                                            onClick={() => setAuthOpen(true)}
-                                            className="bg-black text-white px-4 py-1.5 rounded-full text-sm"
-                                        >
-                                            Log in
-                                        </button>
-
-                                        <button
-                                            onClick={() => {
-                                                setAuthOpen(true);
-                                                setIsLogin(false);
-                                            }}
-                                            className="border px-4 py-1.5 rounded-full text-sm"
-                                        >
-                                            Sign up
+                        {/* Dropdown */}
+                        {open && (
+                            user ? (
+                                // ✅ LOGIN USER UI
+                                <div className="absolute top-10 left-0 border rounded-2xl bg-white shadow-xl w-72 p-3">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="font-semibold">ChatGPT Plus</p>
+                                            <p className="text-xs text-gray-500">Our smartest model & more</p>
+                                        </div>
+                                        <button className="border px-3 py-1 rounded-full text-sm">
+                                            Upgrade
                                         </button>
                                     </div>
+
+                                    <div className="mt-3 flex items-center justify-between text-sm">
+                                        <p>Chat AI</p>
+                                        <span>Free ✔</span>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    )}
-                </div>
+                            ) : (
+
+                                <div className="absolute top-10 left-0 border rounded-2xl bg-white shadow-xl overflow-hidden">
+                                    <div className="h-36 w-80">
+                                        <img
+                                            src="chatAi.webp"
+                                            className="w-full h-full object-cover"
+                                            alt="banner"
+                                        />
+                                    </div>
+
+                                    <div className="p-4">
+                                        <h2 className="font-semibold mb-1">
+                                            Try advanced features for free
+                                        </h2>
+
+                                        <p className="text-xs text-gray-600 mb-3">
+                                            Get smarter responses, upload files, create images, and more.
+                                        </p>
+
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={() => setAuthOpen(true)}
+                                                className="bg-black text-white px-4 py-1.5 rounded-full text-sm"
+                                            >
+                                                Log in
+                                            </button>
+
+                                            <button
+                                                onClick={() => {
+                                                    setAuthOpen(true);
+                                                    setIsLogin(false);
+                                                }}
+                                                className="border px-4 py-1.5 rounded-full text-sm bg-black text-white"
+                                            >
+                                                Sign up
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        )}
+                    </div>
+                )}
+
 
                 {/* RIGHT */}
                 <div className="flex items-center gap-3">
@@ -302,7 +312,7 @@ const TestingNavbar: React.FC<NavbarProps> = ({ user, mobileMenuOpen, setMobileM
                                     setAuthOpen(true);
                                     setStep("signup-email");
                                 }}
-                                className="border px-4 py-1 rounded-full"
+                                className="border px-4 py-1 rounded-full border-black text-black"
                             >
                                 Sign up
                             </button>

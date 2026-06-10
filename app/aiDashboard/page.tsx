@@ -94,14 +94,14 @@ const Page = () => {
       </div>
 
 
-      <div className="flex-1 h-screen flex flex-col overflow-hidden">
+      <div className="w-full md:flex-1 h-screen flex flex-col overflow-hidden">
         {/* Navbar */}
-        <div className="h-16 shrink-0">
+        <div className="w-full h-16 fixed top-0 bg-gray-100 shrink-0">
           <TestingNavbar user={user} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} setUser={setUser} />
         </div>
 
         {/* Chat Window */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto bg-gray-100 mt-15">
           {messages.length === 0 ? (
             <p className="text-center mt-10 text-gray-400">
               Start a new conversation
@@ -112,7 +112,7 @@ const Page = () => {
         </div>
 
         {/* Input */}
-        <div className="shrink-0  p-4">
+        <div className="shrink-0 w-full  fixed bottom-0 p-0">
           <PromptInput
             setMessage={setMessages}
             chatId={chatId}
