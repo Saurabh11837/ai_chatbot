@@ -6,7 +6,7 @@ import { IoSearch, IoSettings } from "react-icons/io5";
 import { LuBadgeHelp } from "react-icons/lu";
 import { BsThreeDots } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
+import { IoMdCloseCircle } from "react-icons/io";
 
 import { useChats } from "../hooks/useChats";
 type SidebarProps = {
@@ -18,7 +18,7 @@ type SidebarProps = {
 }
 const SidebarTesting: React.FC<SidebarProps> = ({ user, mobileMenuOpen, setMobileMenuOpen, onNewChat, onSelectChat }) => {
     const [collapsed, setCollapsed] = useState(false);
-    
+
     const { chats, deleteChat, updateChat } = useChats();
 
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -42,12 +42,13 @@ const SidebarTesting: React.FC<SidebarProps> = ({ user, mobileMenuOpen, setMobil
     }, []);
     return (
         <>
-            {/* <div
-                className="p-2 border-b h-15 border-gray-300 flex items-center justify-center md:hidden"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-                <FiMenu className="h-7 w-7 " />
-            </div> */}
+            {/* Mobile Overlay */}
+            {mobileMenuOpen && (
+                <div
+                    className="fixed inset-0 bg-black/30 z-40 md:hidden"
+                    onClick={() => setMobileMenuOpen(false)}
+                />
+            )}
             <div
                 className={`flex flex-col h-screen ${collapsed ? "w-16" : "w-64"} bg-gray-100 transition-all duration-300 ease-in-out 
             ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"} fixed md:static top-0 left-0 h-screen transition-transform duration-300 ease-in-out z-50 md:translate-x-0 md:flex`}
@@ -65,29 +66,29 @@ const SidebarTesting: React.FC<SidebarProps> = ({ user, mobileMenuOpen, setMobil
                         {/* Toggle Button */}
                         {mobileMenuOpen ? (
                             <div>
-                                <p onClick={() => setMobileMenuOpen(false)}>close</p>
+                                <IoMdCloseCircle onClick={() => setMobileMenuOpen(false)} className="h-8 w-8 cursor-pointer" />
                             </div>
-                        ):(
+                        ) : (
                             <div
-                            className={`absolute right-2 flex items-center transition-all duration-200 ${collapsed ? "opacity-0 group-hover:opacity-100" : "opacity-100"
-                                }`}
-                        >
-                            <GoEyeClosed
-                                onClick={() => setCollapsed(!collapsed)}
-                                className="h-5 w-5 cursor-pointer"
-                            />
+                                className={`absolute right-2 flex items-center transition-all duration-200 ${collapsed ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                                    }`}
+                            >
+                                <GoEyeClosed
+                                    onClick={() => setCollapsed(!collapsed)}
+                                    className="h-5 w-5 cursor-pointer"
+                                />
 
-                            {/* Tooltip */}
-                            <span
-                                className="absolute left-1/2 -translate-x-1/2 top-8 
+                                {/* Tooltip */}
+                                <span
+                                    className="absolute left-1/2 -translate-x-1/2 top-8 
                                 bg-gray-800 text-white text-xs px-2 py-1 rounded 
                                 opacity-0 group-hover:opacity-100 transition whitespace-nowrap"
-                            >
-                                {collapsed ? "Open Sidebar" : "Close Sidebar"}
-                            </span>
-                        </div>
+                                >
+                                    {collapsed ? "Open Sidebar" : "Close Sidebar"}
+                                </span>
+                            </div>
                         )}
-                        
+
                     </div>
                 </div>
 

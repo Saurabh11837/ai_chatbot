@@ -88,7 +88,7 @@ const Page = () => {
 
 
   return (
-    <div className="flex ">
+    <div className="flex bg-gray-100">
       <div className=" ">
         <SidebarTesting user={user} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onNewChat={handleNewChat} onSelectChat={handleSelectChat} />
       </div>
@@ -96,7 +96,7 @@ const Page = () => {
 
       <div className="w-full md:flex-1 h-screen flex flex-col overflow-hidden">
         {/* Navbar */}
-        <div className="w-full h-16 fixed top-0 bg-gray-100 shrink-0">
+        <div className=" w-full md:flex-1 fixed top-0 bg-gray-100 shrink-0">
           <TestingNavbar user={user} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} setUser={setUser} />
         </div>
 
