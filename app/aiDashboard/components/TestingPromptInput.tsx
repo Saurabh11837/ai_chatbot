@@ -71,8 +71,8 @@ const TestingPromptInput: React.FC<Props> = ({ setMessages }) => {
     //     }
     //   };
     // deploy on deno.com url for backend 
-    // const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
-    const APP_API_URL = "http://localhost:5000"
+    const APP_API_URL = "https://ai-chatbot.saurabhorganization.deno.net"
+    // const APP_API_URL = "http://localhost:5000"
     const handleSend = async () => {
         if (!input.trim() || loading) return;
 
